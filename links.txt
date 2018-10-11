@@ -1,0 +1,24 @@
+Ezek lennének a linkek:
+1. Codevolution
+
+https://www.youtube.com/watch?v=0eWrpsCLMJQ&index=1&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ
+
+Ez egész jó, nem is láttam még, de tetszik. Használd nyugodtan
+
+2. Projects to Take You From Zero to Hero
+
+https://www.pluralsight.com/blog/software-development/10-angular-and-typescript-projects-to-take-you-from-zero-to-hero
+
+Ezt valamikor én is használtam, de elég sok ido kell hozzá, s nem biztos, hogy meg is térül a befektetés. 
+Az elozo link job szerintem, de ebbol is nézd át az 1-es, 3-as, 6-os és 7-es projected.
+Tömbre ezt a megoldást találtam:
+
+
+Ez az amit én is magyaráztam, csak hogy konstanst használ és nem változót. Simán lehet tipus nélkül is:
+
+let a = [
+    { name: "bob", occupation: "vivant" },
+    { name: "marty", occupation: "hipster" },
+]
+
+TypeScipt gyakorlásra használhatod a http://www.typescriptlang.org/play/ oldalt.
