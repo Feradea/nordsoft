@@ -1,0 +1,145 @@
+Youtube - Angular 6 Tutorial
+------------------------------------------------------------------------------------------------
+link:https://www.youtube.com/watch?v=0eWrpsCLMJQ&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ&index=1
+------------------------------------------------------------------------------------------------
+Angular app - one or more modules
+Module - one or more components and services
+Components - html + class
+Services - Business logic
+
+Root component {Component1, Component2, ...}
+Module = Component + Services
+------------------------------------------------------------------------------------------------
+COMPONENTS
+
+Component : 	template (view, html)
+		class (code, typescript, data & methods)
+		metadata (information, decorator)
+------------------------
+Component Selector:
+
+1.custom html tag
+
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
+})
+
+<app-test></app-test>
+
+------------------------
+2.class name
+
+@Component({
+  selector: '.app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
+})
+
+<div class="app-test">
+</div>
+
+------------------------
+3.attribute to this div tag
+
+@Component({
+  selector: '[app-test]',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
+})
+ <div app-test>
+
+  </div>
+
+Component Template:
+
+1.
+@Component({
+  selector: '[app-test]',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
+})
+------------------------
+2.
+@Component({
+  selector: '[app-test]',
+  template: '<div>Inline template</div>',
+  styleUrls: ['./test.component.css']
+})
+------------------------
+3.
+@Component({
+  selector: '[app-test]',
+  template: `<div>
+  Multiple line Inline template
+  </div>`,
+  styleUrls: ['./test.component.css']
+})
+
+Component Styles:
+
+1.
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
+})
+
+2. inline
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  // styleUrls: ['./test.component.css']
+  styles: [`p {
+    color:red;
+  }`]
+})
+------------------------------------------------------------------------------------------------
+INTERPOLATION
+
+  <p>Welcome {{ name }}</p>
+  <p>{{ 2 + 2 }}</p>
+  <p>{{ "Welcome" + name }}</p>
+  <p>{{ "name: " + name + ", length: " + name.length }}</p>
+  <p>{{ name.toUpperCase() + name.toLowerCase() }}</p>
+  <p>{{ greetUser()}}</p>
+  <p> a = 2+2 //ERR: Bindings cannot contain assignments </p>
+  <p>window.location.href //read property 'location' of undefined</p>
+  <p>{{ siteUrl }}</p>
+
+ public name = "Andrea";
+------------------------------------------------------------------------------------------------
+PROPERTY BINDING 
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-test',
+  template: `<input type="text" value="Andrea">
+  <input type="text" [id] = "myId" value="Andrea">
+  <input [disabled] = "isDisabled" type="text" id = "{{myId}}" value="Andrea">
+  <input bind-disabled = "isDisabled" type="text" id = "{{myId}}" value="Andrea">`,
+  styleUrls: ['./test.component.css']
+})
+export class TestComponent implements OnInit {
+
+  public name = "Andrea";
+  public myId = "testId";
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+dev -> console:
+
+$0.getAttribute('value')
+$0.value
+
+Attribute vs Property
+
+Attributes and Properties are not the same.
+Attributes - HTML - cannot change once ther are initialized
+Properties DOM (Document Object Model) - however can change
+------------------------------------------------------------------------------------------------

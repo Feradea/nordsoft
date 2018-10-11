@@ -1,0 +1,141 @@
+Node JS
+	node -v 		//megadja a verziót
+	pl. node v8.11.1
+
+Node Package Manager:
+	npm - v			//megadja a verziót
+	pl. npm 1.2.11
+
+	npm install express
+	npm install npm@latest -g
+	npm update
+	npm i -g npm@5.3	//downgrading to version 5.3
+
+Typescript:
+	npm install -g typescript
+	tsc --version
+
+
+Angular:
+	npm install -g @angular/cli
+		-g // globally
+	npm uninstall –g @angular/cli
+	npm install –g @angular/cli@6.0.3
+	ng --version
+	ng --help
+
+	ng new angular-hello-world
+	ng new angular-reddit
+	ng new ng6-project --routing // routolast is megcsinalja
+
+	ng serve
+	ng serve --port 9001
+
+	ng generate component hello-world
+	ng generate component user-item
+	ng generate component user-list
+
+	ng g c test // generate component test
+
+	ng new
+	ng serve
+	ng generate
+	ng lint
+	ng test
+	ng e2e // running end to end tests
+	ng build
+	ng get/ng set
+	ng doc
+	ng xi18n
+	ng update
+
+
+________________________________
+A basic Component has two parts:
+1. A Component decorator
+2. A component definition class
+
+.ts instead of .js
+
+ng serve command live-compiles our .ts to a .js file automatically.
+________________________________
+import { Component, OnInit } from '@angular/core';
+
+the compiler that "@angular/core" defines and 
+exports two JavaScript/TypeScript objects called 
+Component and OnInit.
+________________________________
+import { things } - import/require 
+{ things } - destructuring
+
+________________________________
+Adding a template 
+
+ @Component({
+2   selector: 'app-hello-world',
+3   template: `
+4     <p>
+5       hello-world works inline!
+6     </p>
+7   `
+8 })
+
+vagy   templateUrl: './hello-world.component.html',
+
+backticks (` … `). 
+________________________________
+Adding CSS Styles with styleUrls 
+styleUrls: ['./hello-world.component.css']
+________________________________________________________________________
+names : string[];
+this.names = ['Alice','Felix','Carlos'];
+<li *ngFor="let name of foobar">Hello {{ name }}</li>
+________________________________________________________________________
+import { Component, OnInit, Input } from '@angular/core';
+@Input() name: string;
+
+<li *ngFor="let individualUserName of names">
+   <app-user-item [name]="individualUserName"></app-user-item>
+</li>
+________________________________________________________________________
+<div class="field">
+   <label for="link">Link:</label>
+   <input #newlink  name="link" id="link">
+</div>
+
+<button (click)="addArticle(newtitle, newlink)"  class="ui positive right floated button">  
+  Submit link  
+</button> 
+
+addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
+	console.log(`Adding article title: ${title.value} and link: ${link.value}`);
+	return false;}
+
+*** #newlink  is now an object -> newtitle.value.
+________________________________________________________________________
+var materials = [
+  'Hydrogen',
+  'Helium',
+  'Lithium',
+  'Beryllium'
+];
+
+console.log(materials.map(material => material.length));
+// expected output: Array [8, 6, 7, 9]
+________________________________________________________________________
+ng-app, ng-model, ng-bind, ng-init
+
+________________________________________________________________________
+ANGULAR INSTALL
+
+Your npm version should be 5.6.0 or higher.
+Make sure you install Node 8.9.0 or higher.
+
+________________________________________________________________________
+Links:
+
+https://www.c-sharpcorner.com/article/how-to-setup-angular-development-environment-in-visual-studio-code/
+________________________________________________________________________
+
+ng new angular-example
+npm install --save @angular/material @angular/cdk @angular/animations
