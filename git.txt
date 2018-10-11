@@ -1,0 +1,10 @@
+feltoltes:
+
+git add . -A
+git commit -a -m "Uzenet"
+git push
+
+
+git add fajlnev
+git commit -m "cucc"
+_________________________________________
