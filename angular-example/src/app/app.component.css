@@ -1,0 +1,30 @@
+.container{
+    
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container > div:nth-child(1){
+    width:200px;
+    height: 200px;
+    background: #cf6161;
+    margin:1rem;
+    justify-content: center;
+}
+
+.container > div:nth-child(2){
+    width:500px;
+    height: 200px;
+    background: #b2cf61;
+    margin:1rem;
+}
+
+.container > div:nth-child(3){
+    width:750px;
+    height: 200px;
+    background: #6191cf;
+    margin:1rem;
+}
