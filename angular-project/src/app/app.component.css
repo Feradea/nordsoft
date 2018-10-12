@@ -26,3 +26,23 @@
     background: #6191cf;
     margin:1rem;
 }
+
+table{
+    /* border:1px solid black; */
+    text-align: center;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f1f1f1;}
+
+table tr:hover {background-color: #e5e5e5;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #b2cf61;
+}

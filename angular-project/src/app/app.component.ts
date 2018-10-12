@@ -24,7 +24,7 @@ export class AppComponent{
       name: 'Name 2',
       age: 42,
       occupation: 'administrator',
-      address: 'Street 234',
+      address: 'Baker Street 234',
       city: 'City 2',
       phone: '0123456789'
     },

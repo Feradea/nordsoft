@@ -1,4 +1,5 @@
 <h1>{{ title }}</h1>
+
 <div class="container">
   <div>
     <app-test></app-test>
@@ -17,5 +18,25 @@
     </li>
   </ul>
 
-</div>
+  <div>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Occupation</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Phone number</th>
+      </tr>
+      <tr *ngFor="let element of users">
+        <td>{{element.id}}</td>
+        <td>{{element.name}}</td>
+        <td>{{element.occupation}}</td>
+        <td>{{element.address}}</td>
+        <td>{{element.city}}</td>
+        <td>{{element.phone}}</td>
+      </tr>
+    </table>
+  </div>
 
+</div>
