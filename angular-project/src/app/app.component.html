@@ -1,0 +1,21 @@
+<h1>{{ title }}</h1>
+<div class="container">
+  <div>
+    <app-test></app-test>
+  </div>
+  <div>
+    <app-test></app-test>
+  </div>
+  <div>
+    <app-test></app-test>
+  </div>
+
+  <ul>
+    <li *ngFor="let element of users" [type]="element">
+      {{element.id}}, {{element.name}}, {{element.occupation}},
+      {{element.address}}, {{element.city}}, {{element.phone}}
+    </li>
+  </ul>
+
+</div>
+
