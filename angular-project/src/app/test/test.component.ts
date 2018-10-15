@@ -6,8 +6,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-
+  @Input() title: string;
+  @Input() name: string;
+  @Input() users: any[]; 
+  
   constructor() {
+
    }
 
   ngOnInit() {

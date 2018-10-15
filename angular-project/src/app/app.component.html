@@ -1,24 +1,27 @@
 <h1>{{ title }}</h1>
 
 <div class="container">
-  <div>
-    <app-test></app-test>
-  </div>
-  <div>
-    <app-test></app-test>
-  </div>
-  <div>
-    <app-test></app-test>
+
+  <div class="a">
+    <app-test [users]="users" [name]="name"></app-test>
   </div>
 
-  <ul>
+  <div class="b">
+    <app-test [users]="users" [name]="name"></app-test>
+  </div>
+  
+  <div class="c">
+    <app-test [users]="users" [name]="name"></app-test>
+  </div>
+
+  <!-- <ul>
     <li *ngFor="let element of users" [type]="element">
       {{element.id}}, {{element.name}}, {{element.occupation}},
       {{element.address}}, {{element.city}}, {{element.phone}}
     </li>
-  </ul>
+  </ul> -->
 
-  <div>
+  <!-- <div>
     <table>
       <tr>
         <th>Id</th>
@@ -37,6 +40,6 @@
         <td>{{element.phone}}</td>
       </tr>
     </table>
-  </div>
+  </div> -->
 
 </div>
