@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+.container {
+  border: 1px solid black;
+  width: 350px;
+  position: relative; 
+}
+.container2 {
+  border: 1px solid black;
+  width: 450px;
+  position: relative; 
+  margin-top:10px;
+}
+.container3 {
+  border: 1px solid black;
+  width: 450px;
+  height: 100px;
+  position: relative; 
+  margin-top:10px;
+  overflow: hidden;
+}
+
+
+.ex2 {
+    height: 55px;
+    --width: 200px;    
+    overflow-y: hidden;
+    margin-bottom:10px;
+}
+.ex2:after { content: '...'; position: absolute; bottom:0; right:10px; font-size:32px;  }
+
+table{
+	border: 1px solid black;
+}
+
+tr,td{
+	border:1px solid red;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+	<div class="ex2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+	</div>
+</div>
+
+<div class="container2">
+	<div class="ex2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut.
+	</div>
+</div>
+
+<div class="container3">
+	<table class="ex2">
+		<tr>
+			<td>aaasaas</td>
+			<td>sdasds</td>
+		</tr>
+		<tr>
+			<td>asdasda</td>
+			<td>sfhfrghfgc</td>
+		</tr>
+		<tr>
+			<td>fdsfsdf</td>
+			<td>dsfsdfds</td>
+		</tr>
+		<tr>
+			<td>aaasaas</td>
+			<td>sdasds</td>
+		</tr>
+		<tr>
+			<td>asdasda</td>
+			<td>sfhfrghfgc</td>
+		</tr>
+		<tr>
+			<td>fdsfsdf</td>
+			<td>dsfsdfds</td>
+		</tr>
+	</table>
+</div>
+
+
+
+</body>
+</html>
