@@ -1,4 +1,4 @@
-table {
+ table {
   text-align: center;
   table-layout: fixed; /*auto, fixed*/
   width: 100%;
@@ -7,39 +7,32 @@ table {
 table td,
 table th {
   border: 1px solid #ddd;
-  padding: 8px;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 2px;
   white-space: nowrap;
-}
-
-table tr:nth-child(even) {
-  background-color: #f1f1f1;
-}
-
-table tr:nth-child(odd) {
-  background-color: #f1f1f1b4;
-}
-
-table tr:hover {
-  background-color: #e5e5e5;
+  overflow: hidden;
+  text-overflow:ellipsis;
 }
 
 table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #b09ef1;
+}
+ /* */
+.scroll {
+  overflow-y: scroll;
 }
 
-table td,
-table th {
-  border: 1px solid #ddd;
-  padding: 5px;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.ellipsis {
+  height: 85%;
+  --width: 200px;
+  overflow-y: hidden;
+  margin-bottom: 10px;
 }
 
-
+.ellipsis:after {
+  content: '...';
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  font-size: 32px;
+}

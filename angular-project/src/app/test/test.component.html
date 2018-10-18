@@ -1,22 +1,49 @@
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Occupation</th>
-    <th>Address</th>
-    <th>City</th>
-    <th>Phone number</th>
-  </tr>
-  <tr *ngFor="let element of users">
-    <td>{{element.id}}</td>
-    <td>{{element.name}}</td>
-    <td>{{element.occupation}}</td>
-    <td>{{element.address}}</td>
-    <td>{{element.city}}</td>
-    <td>{{element.phone}}</td>
-  </tr>
-</table>
+<div *ngIf="ellipsis; then ellipsisBlock; else emptyBlock">
+  
+</div>
 
-<p>
-  {{ "Created by: "+ name }}
-</p> 
+<ng-template #ellipsisBlock>
+    <div class="ellipsis">
+        <table>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Occupation</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Phone number</th>
+          </tr>
+          <tr *ngFor="let element of users">
+            <td>{{element.id}}</td>
+            <td>{{element.name}}</td>
+            <td>{{element.occupation}}</td>
+            <td>{{element.address}}</td>
+            <td>{{element.city}}</td>
+            <td>{{element.phone}}</td>
+          </tr>
+        </table>
+      </div>
+</ng-template>
+
+<ng-template #emptyBlock>
+    <div>
+        <table>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Occupation</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Phone number</th>
+          </tr>
+          <tr *ngFor="let element of users">
+            <td>{{element.id}}</td>
+            <td>{{element.name}}</td>
+            <td>{{element.occupation}}</td>
+            <td>{{element.address}}</td>
+            <td>{{element.city}}</td>
+            <td>{{element.phone}}</td>
+          </tr>
+        </table>
+      </div>
+</ng-template>

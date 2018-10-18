@@ -2,44 +2,46 @@
 
 <div class="container">
 
-  <div class="a">
-    <app-test [users]="users" [name]="name"></app-test>
+  <div [className]="'a'">
+    <app-test [users]="users"></app-test>
   </div>
 
-  <div class="b">
-    <app-test [users]="users" [name]="name"></app-test>
-  </div>
-  
-  <div class="c">
-    <app-test [users]="users" [name]="name"></app-test>
+  <div [className]="'b'">
+    <app-test [users]="users"></app-test>
   </div>
 
-  <!-- <ul>
-    <li *ngFor="let element of users" [type]="element">
-      {{element.id}}, {{element.name}}, {{element.occupation}},
-      {{element.address}}, {{element.city}}, {{element.phone}}
-    </li>
-  </ul> -->
+  <div [className]="'c'">
+    <app-test [users]="users"></app-test>
+  </div>
 
-  <!-- <div>
-    <table>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Occupation</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>Phone number</th>
-      </tr>
-      <tr *ngFor="let element of users">
-        <td>{{element.id}}</td>
-        <td>{{element.name}}</td>
-        <td>{{element.occupation}}</td>
-        <td>{{element.address}}</td>
-        <td>{{element.city}}</td>
-        <td>{{element.phone}}</td>
-      </tr>
-    </table>
-  </div> -->
+  <!-- For example  -->
+  <div [className]="'d'">
+    <div [className]="'ellipsis'">
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    </div>
+  </div>
 
+  <div [className]="'scroll'">
+      <div>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      </div>
+    </div>
 </div>

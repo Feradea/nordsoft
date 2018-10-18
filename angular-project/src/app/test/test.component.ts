@@ -7,8 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TestComponent implements OnInit {
   @Input() title: string;
-  @Input() name: string;
   @Input() users: any[]; 
+
+  /* When ellipsis = true, then class="ellipsis" in test.component.html*/
+  /* When ellipsis = false, then class="" in test.component.html*/
+  public ellipsis = false;
   
   constructor() {
 
@@ -16,5 +19,14 @@ export class TestComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // checkOverflow (element) {
+  //   if (element.offsetHeight < element.scrollHeight ||
+  //       element.offsetWidth < element.scrollWidth) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
 }

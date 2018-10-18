@@ -2,44 +2,90 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;  
+  justify-content: center;
 }
 
-.container>div:nth-child(1) {
-  width: 200px;
-  height: 200px;
-  background: #cf6161;
-  margin: 1rem;
-  padding: 1rem;
-}
-
-.container>div:nth-child(2) {
-  width: 500px;
+.container>.a {
+  border: 1px solid black;
+  width: 450px;
   height: 150px;
+  position: relative; 
+  margin:10px;
+  padding:10px;
+  overflow: hidden;
+  background: #cf6161;
+}
+
+.container>.b {
+  border: 1px solid black;
+  width: 450px;
+  height: 150px;
+  position: relative; 
+  margin:10px;
+  padding:10px;
+  overflow: hidden;
   background: #b2cf61;
-  margin: 1rem;
-  padding: 1rem;
 }
 
-.container>div:nth-child(3) {
-  width: 600px;
+.container>.c {
+  border: 1px solid black;
+  width: 450px;
   height: 200px;
+  position: relative; 
+  margin:10px;
+  padding:10px;
+  overflow: hidden;
   background: #6191cf;
-  margin: 1rem;
-  padding: 1rem;
+
 }
 
-div .a{
-  overflow-y: scroll;
-  overflow-x: hidden;
+.container>.d {
+  border: 1px solid black;
+  width: 450px;
+  height: 100px;
+  position: relative; 
+  margin:10px;
+  padding:10px;
+  overflow: hidden;
+  background: #cfa961;
 }
 
-div .b{
+.scroll {
+  border: 1px solid black;
+  width: 450px;
+  height: 100px;
+  margin:10px;
+  padding:10px;
+  background: #cfa961;
   overflow-y: scroll;
-  overflow-x: hidden;
 }
 
-div .c{
-  overflow-y: scroll;
-  overflow-x: hidden;
+.ellipsis {
+  height: 85%;
+  --width: 200px;
+  overflow-y: hidden;
+  margin-bottom: 10px;
 }
+
+.ellipsis:after {
+  content: '...';
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  font-size: 32px;
+}
+
+/* .ex2 {
+  height: 55px;
+  --width: 200px;
+  overflow-y: hidden;
+  margin-bottom: 10px;
+}
+
+.ex2:after {
+  content: '...';
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  font-size: 32px;
+} */
