@@ -1,0 +1,55 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filter Panel
+      </mat-panel-title>
+      <mat-panel-description *ngIf="!panelOpenState">
+        <p>Field1: <b> 15 </b>, Date1: <b> 2018-10-17 </b>, Field2: <b> String </b>, Options: <b> Option 2 </b></p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Field 1">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date 1">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Field 2">
+    </mat-form-field>
+
+    <mat-radio-group>
+      <label>Options: </label>
+      <mat-radio-button value="1">Option 1</mat-radio-button>
+      <mat-radio-button value="2">Option 2</mat-radio-button>
+    </mat-radio-group>
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelSecondOpenState = true" (closed)="panelSecondOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        My second panel
+      </mat-panel-title>
+      <mat-panel-description *ngIf="!panelSecondOpenState">
+        <p>FieldA: , FieldB:</p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Field A">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Field B">
+    </mat-form-field>
+
+  </mat-expansion-panel>
+</mat-accordion>
