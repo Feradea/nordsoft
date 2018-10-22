@@ -2,54 +2,43 @@
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Filter Panel
+        {{ title }}
       </mat-panel-title>
       <mat-panel-description *ngIf="!panelOpenState">
-        <p>Field1: <b> 15 </b>, Date1: <b> 2018-10-17 </b>, Field2: <b> String </b>, Options: <b> Option 2 </b></p>
+        <p>Some text</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
+    <mat-form-field *ngFor="let element of field_def">
+      <div [ngSwitch]="element.type">
 
-    <mat-form-field>
-      <input matInput placeholder="Field 1">
+        <div *ngSwitchCase="'number'">
+          <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" value="{{ element.value}}">
+        </div>
+
+        <div *ngSwitchCase="'date'">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date 1" value="{{ element.value}}">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+
+        <div *ngSwitchCase="'string'">
+          <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" value="{{ element.value}}">
+        </div>
+
+        <div *ngSwitchCase="'radio'">
+          <label>{{ element.caption + ": " }}</label>
+          <mat-radio-group>
+            <mat-radio-button *ngFor="let sub of element.value" value="{{ sub.value }}">{{ sub.caption }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div *ngSwitchDefault>
+            <input matInput type="text" />
+        </div>
+
+        <input matInput type="text" />
+
+      </div>
     </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date 1">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Field 2">
-    </mat-form-field>
-
-    <mat-radio-group>
-      <label>Options: </label>
-      <mat-radio-button value="1">Option 1</mat-radio-button>
-      <mat-radio-button value="2">Option 2</mat-radio-button>
-    </mat-radio-group>
-
-  </mat-expansion-panel>
-</mat-accordion>
-
-<mat-accordion>
-  <mat-expansion-panel (opened)="panelSecondOpenState = true" (closed)="panelSecondOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        My second panel
-      </mat-panel-title>
-      <mat-panel-description *ngIf="!panelSecondOpenState">
-        <p>FieldA: , FieldB:</p>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <mat-form-field>
-      <input matInput placeholder="Field A">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Field B">
-    </mat-form-field>
-
   </mat-expansion-panel>
 </mat-accordion>

@@ -1,9 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome 
   </h1>
   <div class="mat-app-background basic-container">
-      <app-nord-filter-panel>loading</app-nord-filter-panel>
+      <app-nord-filter-panel [title]="panel_title" [field_def]="field_def">loading</app-nord-filter-panel>
   </div>
+
+  <!-- <div class="mat-app-background basic-container">
+    <app-nord-filter-panel [title]="panel_title" [field_def]="field_def">loading</app-nord-filter-panel>
+</div> -->
+
 </div>
