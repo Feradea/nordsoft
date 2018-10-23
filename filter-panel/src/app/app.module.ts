@@ -12,6 +12,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatRadioModule} from '@angular/material/radio';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +26,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
-    
+    MatRadioModule,
+    FormsModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

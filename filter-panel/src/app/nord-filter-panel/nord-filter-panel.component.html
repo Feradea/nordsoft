@@ -5,40 +5,45 @@
         {{ title }}
       </mat-panel-title>
       <mat-panel-description *ngIf="!panelOpenState">
-        <p>Some text</p>
+        <ng-container *ngFor="let element of field_def; last as l" [ngSwitch]="element.type">
+
+          <p *ngSwitchCase="'number'"> {{ element.caption }}:<b>{{ element.value }}</b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'date'"> {{ element.caption }}:<b>{{ element.value }}</b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'string'"> {{ element.caption }}:<b>{{ element.value }}</b>{{l ? '' : ', '}}</p>
+
+          <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ option }}</b>{{l ? '' : ', '}}</p>
+
+
+
+
+        </ng-container>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <mat-form-field *ngFor="let element of field_def">
-      <div [ngSwitch]="element.type">
+    <ng-container *ngFor="let element of field_def" [ngSwitch]="element.type">
 
-        <div *ngSwitchCase="'number'">
-          <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" value="{{ element.value}}">
-        </div>
+      <mat-form-field *ngSwitchCase="'number'">
+        <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" value="{{ element.value}}"
+          [(ngModel)]="element.value">
+      </mat-form-field>
 
-        <div *ngSwitchCase="'date'">
-          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Date 1" value="{{ element.value}}">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </div>
+      <mat-form-field *ngSwitchCase="'date'">
+        <input matInput [matDatepicker]="picker" placeholder="Date 1" value="{{ element.value}}" [(ngModel)]="element.value">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-        <div *ngSwitchCase="'string'">
-          <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" value="{{ element.value}}">
-        </div>
+      <mat-form-field *ngSwitchCase="'string'">
+        <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" value="{{ element.value}}"
+          [(ngModel)]="element.value">
+      </mat-form-field>
 
-        <div *ngSwitchCase="'radio'">
-          <label>{{ element.caption + ": " }}</label>
-          <mat-radio-group>
-            <mat-radio-button *ngFor="let sub of element.value" value="{{ sub.value }}">{{ sub.caption }}</mat-radio-button>
-          </mat-radio-group>
-        </div>
+      <mat-radio-group *ngSwitchCase="'radio'" [(ngModel)]="option">
+        <label>{{ element.caption + ": " }}</label>
+        <mat-radio-button *ngFor="let sub of element.value; index as i" value="{{ sub.value }}">
+          {{ sub.caption }}
+        </mat-radio-button>
+      </mat-radio-group>
 
-        <div *ngSwitchDefault>
-            <input matInput type="text" />
-        </div>
-
-        <input matInput type="text" />
-
-      </div>
-    </mat-form-field>
+    </ng-container>
   </mat-expansion-panel>
 </mat-accordion>

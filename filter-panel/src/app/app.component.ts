@@ -10,6 +10,8 @@ import {
 export class AppComponent {
 
   panel_title: string = "Filter Panel";
+  panel_title2: string = "My Second Panel";
+  panel_title3: string = "My Third Panel for testing";
 
   field_def = [{
       caption: "Field 1",
@@ -42,8 +44,50 @@ export class AppComponent {
           value: "3"
         }
       ]
+    }
+  ];
+
+  field_def2 = [{
+      caption: "Field A",
+      type: "number",
+      value: "1523"
     },
-  ]
+    {
+      caption: "Field B",
+      type: "string",
+      value: "Another string"
+    }
+  ];
+
+  field_def3 = [{
+    caption: "Field 123",
+    type: "number",
+    value: "159"
+  },
+  {
+    caption: "Field Abc",
+    type: "string",
+    value: "Some text"
+  },
+  {
+    caption: "Options",
+    type: "radio",
+    value: [{
+        caption: "Option a",
+        value: "apple"
+      },
+      {
+        caption: "Option b",
+        value: "orange"
+      },
+      {
+        caption: "Option c",
+        value: "banana"
+      }
+    ]
+  },
+];
+
 
 
 
