@@ -13,33 +13,30 @@
 
           <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ option }}</b>{{l ? '' : ', '}}</p>
 
-
-
-
         </ng-container>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <ng-container *ngFor="let element of field_def" [ngSwitch]="element.type">
 
       <mat-form-field *ngSwitchCase="'number'">
-        <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" value="{{ element.value}}"
+        <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" [value]="element.value"
           [(ngModel)]="element.value">
       </mat-form-field>
 
       <mat-form-field *ngSwitchCase="'date'">
-        <input matInput [matDatepicker]="picker" placeholder="Date 1" value="{{ element.value}}" [(ngModel)]="element.value">
+        <input matInput [matDatepicker]="picker" placeholder="Date 1" [value]="element.value" [(ngModel)]="element.value">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field *ngSwitchCase="'string'">
-        <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" value="{{ element.value}}"
+        <input matInput type="{{ element.type }}" placeholder="{{ element.caption }}" [value]="element.value"
           [(ngModel)]="element.value">
       </mat-form-field>
 
       <mat-radio-group *ngSwitchCase="'radio'" [(ngModel)]="option">
         <label>{{ element.caption + ": " }}</label>
-        <mat-radio-button *ngFor="let sub of element.value; index as i" value="{{ sub.value }}">
+        <mat-radio-button *ngFor="let sub of element.value; index as i" [value]="sub.value">
           {{ sub.caption }}
         </mat-radio-button>
       </mat-radio-group>

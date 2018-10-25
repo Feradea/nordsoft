@@ -1,23 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { NordFilterPanelComponent } from './nord-filter-panel/nord-filter-panel.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MatInputModule} from '@angular/material/input';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material';
-import {MatRadioModule} from '@angular/material/radio';
+import { AppComponent } from './app.component';
+import { NordFilterPanelComponent } from './nord-filter-panel/nord-filter-panel.component';
+import { NordFilterPanel2Component } from './nord-filter-panel2/nord-filter-panel2.component';
+import { NordFilterPanel3Component } from './nord-filter-panel3/nord-filter-panel3.component';
 
-import { FormsModule } from '@angular/forms';
+import {
+	MatInputModule, 
+	MatExpansionModule, MatDatepickerModule, MatNativeDateModule,
+	MatRadioModule
+} from '@angular/material';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NordFilterPanelComponent
+    NordFilterPanelComponent,
+    NordFilterPanel2Component,
+    NordFilterPanel3Component
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   
   ],
   providers: [],

@@ -14,6 +14,8 @@ export class NordFilterPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // amikor mar inicialva van, renderelve van
+    // ide kell tenni a radio button eseteben a parametert 
   }
 
 }
