@@ -1,1 +1,48 @@
-<p> filter-panel2 works</p>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ title }} 2
+      </mat-panel-title>
+      <mat-panel-description *ngIf="!panelOpenState">
+        <ng-container *ngFor="let element of items; last as l" [ngSwitch]="element.type">
+
+          <p *ngSwitchCase="'number'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'text'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'date'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'string'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'radio'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
+
+        </ng-container>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="formgroup" (submit)="onSubmit()">
+      <ng-container *ngFor="let element of items" [ngSwitch]="element.type">
+
+        <mat-form-field *ngSwitchCase="'number'">
+          <input matInput type="{{ element.type }}" [formControlName]="element.name" placeholder="{{ element.name }}">
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'text'">
+          <input matInput type="{{ element.type }}" [formControlName]="element.name" placeholder="{{ element.name }}">
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'date'">
+          <input matInput [matDatepicker]="picker" [formControlName]="element.name" placeholder="{{ element.name }}">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-radio-group *ngSwitchCase="'radio'">
+          <label>{{ element.name + ": " }}</label>
+          <mat-radio-button *ngFor="let sub of element.value; index as i" [formControlName]="element.name" [value]="sub.value">
+            {{ sub.caption }}
+          </mat-radio-button>
+        </mat-radio-group>
+
+      </ng-container>
+      <button type="submit">Save</button>
+    </form>
+
+  </mat-expansion-panel>
+</mat-accordion>
