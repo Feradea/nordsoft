@@ -7,8 +7,12 @@ import {
   FormControl,
   FormGroup,
   FormBuilder,
-  Validators
+  Validators,
+  FormArray
 } from '@angular/forms';
+import {
+  formGroupNameProvider, FormGroupName
+} from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-nord-filter-panel2',
@@ -20,39 +24,40 @@ export class NordFilterPanel2Component implements OnInit {
   @Input() field_def: any[];
 
   formgroup: FormGroup;
-  items = [{
-      name: 'Field1',
-      type: 'text',
-      value: 'Some text'
-    },
-    {
-      name: 'Field2',
-      type: 'number',
-      value: 2
-    },
-    {
-      name: 'Date1',
-      type: 'date',
-      value: '2018-10-26'
-    },
-    {
-      name: "Options",
-      type: "radio",
-      value: [{
-          caption: "Option 1",
-          value: "1"
-        },
-        {
-          caption: "Option 2",
-          value: "2"
-        },
-        {
-          caption: "Option 3",
-          value: "3"
-        }
-      ]
-    }
-  ]
+
+  // items = [{
+  //     caption: 'Field123',
+  //     type: 'string',
+  //     value: 'Some text'
+  //   },
+  //   {
+  //     caption: 'Field2',
+  //     type: 'number',
+  //     value: 2
+  //   },
+  //   {
+  //     caption: 'Date1',
+  //     type: 'date',
+  //     value: '2018-10-26'
+  //   },
+  //   {
+  //     caption: "Options",
+  //     type: "radio",
+  //     value: [{
+  //         caption: "Option a",
+  //         value: "a"
+  //       },
+  //       {
+  //         caption: "Option b",
+  //         value: "b"
+  //       },
+  //       {
+  //         caption: "Option c",
+  //         value: "a"
+  //       }
+  //     ]
+  //   }
+  // ];
 
   onSubmit() {
     console.log(this.formgroup.value)
@@ -62,10 +67,29 @@ export class NordFilterPanel2Component implements OnInit {
 
   ngOnInit() {
     // keszitek egy objektumot, amit kesobb felhasznalok arra, hogy FormGroup-ot epitsek belole
+
     let group: any = {};
-    this.items.forEach(i => {
-      group[i.name] = new FormControl(i.value)
+
+    this.field_def.forEach(i => { // foreach statement
+
+      if (Array.isArray(i.value)) {
+        // group[i.caption] = new FormControl(i.value)
+        // document.write(" isArray=:" + i.value); 
+
+        // document.write(" isArray=:" + i.value.length);  //3
+        // document.write(" isArray=:" + i.value[0].value); //apple
+
+        for (let y = 0; y < i.value.length; y++) {
+          document.write(i.value[y].caption + " " + i.value[y].value);
+        }
+
+      } else {
+        // const control = new FormControl('some value');
+        group[i.caption] = new FormControl(i.value)
+      }
+
     })
+
     this.formgroup = new FormGroup(group);
     console.log(group);
   }

@@ -5,37 +5,37 @@
         {{ title }} 2
       </mat-panel-title>
       <mat-panel-description *ngIf="!panelOpenState">
-        <ng-container *ngFor="let element of items; last as l" [ngSwitch]="element.type">
+        <ng-container *ngFor="let i of field_def; last as l" [ngSwitch]="i.type">
 
-          <p *ngSwitchCase="'number'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
-          <p *ngSwitchCase="'text'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
-          <p *ngSwitchCase="'date'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
-          <p *ngSwitchCase="'string'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
-          <p *ngSwitchCase="'radio'"> {{ element.name }}:<b> </b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'number'"> {{ i.caption }}:<b> </b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'date'"> {{ i.caption }}:<b> </b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'string'"> {{ i.caption }}:<b> </b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'radio'"> {{ i.caption }}:<b> </b>{{l ? '' : ', '}}</p>
 
         </ng-container>
       </mat-panel-description>
     </mat-expansion-panel-header>
+
     <form [formGroup]="formgroup" (submit)="onSubmit()">
-      <ng-container *ngFor="let element of items" [ngSwitch]="element.type">
+      <ng-container *ngFor="let i of field_def" [ngSwitch]="i.type">
 
         <mat-form-field *ngSwitchCase="'number'">
-          <input matInput type="{{ element.type }}" [formControlName]="element.name" placeholder="{{ element.name }}">
+          <input matInput type="number" [formControlName]="i.caption" placeholder="{{ i.caption }}">
         </mat-form-field>
 
-        <mat-form-field *ngSwitchCase="'text'">
-          <input matInput type="{{ element.type }}" [formControlName]="element.name" placeholder="{{ element.name }}">
+        <mat-form-field *ngSwitchCase="'string'">
+          <input matInput type="text" [formControlName]="i.caption" placeholder="{{ i.caption }}">
         </mat-form-field>
 
         <mat-form-field *ngSwitchCase="'date'">
-          <input matInput [matDatepicker]="picker" [formControlName]="element.name" placeholder="{{ element.name }}">
+          <input matInput [matDatepicker]="picker" [formControlName]="i.caption" placeholder="{{ i.caption }}">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <mat-radio-group *ngSwitchCase="'radio'">
-          <label>{{ element.name + ": " }}</label>
-          <mat-radio-button *ngFor="let sub of element.value; index as i" [formControlName]="element.name" [value]="sub.value">
+          <label>{{ i.caption + ": " }}</label>
+          <mat-radio-button *ngFor="let sub of i.value; index as i" [formControlName]="i.caption" [value]="sub.value">
             {{ sub.caption }}
           </mat-radio-button>
         </mat-radio-group>

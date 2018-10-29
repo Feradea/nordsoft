@@ -34,15 +34,15 @@ export class AppComponent {
       type: "radio",
       value: [{
           caption: "Option 1",
-          value: "1"
+          value: "apple"
         },
         {
           caption: "Option 2",
-          value: "2"
+          value: "banana"
         },
         {
           caption: "Option 3",
-          value: "3"
+          value: "orange"
         }
       ]
     }

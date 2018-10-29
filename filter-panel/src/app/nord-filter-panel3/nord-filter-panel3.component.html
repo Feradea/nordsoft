@@ -1,13 +1,5 @@
-<!-- <label>
-  Name:
-  <input type="text" [formControl]="name">
-</label>
-
-<p>
-  Value: {{ name.value }}
-</p> -->
-
-<form [formGroup]="profileForm">
+<h1>NFP - 3</h1>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 
   <label>
     First Name:
@@ -19,5 +11,38 @@
     <input type="text" formControlName="lastName">
   </label>
 
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <label>
+      Street:
+      <input type="text" formControlName="street">
+    </label>
+
+    <label>
+      City:
+      <input type="text" formControlName="city">
+    </label>
+
+    <label>
+      State:
+      <input type="text" formControlName="state">
+    </label>
+
+    <label>
+      Zip Code:
+      <input type="text" formControlName="zip">
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+
 </form>
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()"><button type="submit" [disabled]="!profileForm.valid">Submit</button></form>
+
+<p>
+  Value: {{ profileForm.value.firstName }}
+
+  Valid: {{ profileForm.valid }}
+
+  Status: {{ profileForm.status }}
+</p>
