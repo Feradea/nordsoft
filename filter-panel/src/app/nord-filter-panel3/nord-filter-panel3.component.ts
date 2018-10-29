@@ -24,7 +24,7 @@ export class NordFilterPanel3Component implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // let group: any = {};
+     let group: any = {};
 
     this.field_def.forEach(i => {
 
@@ -33,16 +33,25 @@ export class NordFilterPanel3Component implements OnInit {
       // document.write(i.value);
 
       if (i.type === "string") {
-        document.write("string");
-        const control = new FormControl(i.value);
-        console.log(control.value);
+        //document.write("string");
+
+        group[i.caption] = new FormControl(i.value); 
+        
       } else if (i.type === "number") {
-        document.write("number");
+        //document.write("number");
+        group[i.caption] = new FormControl(i.value); 
+
       } else if (i.type === "date") {
-        document.write("date");
+        ///document.write("date");
+        group[i.caption] = new FormControl(i.value); 
+
       } else if (i.type === "radio") {
-        document.write("radio");
+        //document.write("radio");
+        group[i.caption] = new FormControl(i.value); 
+        
       }
+
+      console.log(group);
     })
   }
 
