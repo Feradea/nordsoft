@@ -80,7 +80,8 @@ export class NordFilterPanel2Component implements OnInit {
         // document.write(" isArray=:" + i.value[0].value); //apple
 
         for (let y = 0; y < i.value.length; y++) {
-          document.write(i.value[y].caption + " " + i.value[y].value);
+          document.write(i.value[y].caption);
+          document.write(i.value[y].value);
         }
 
       } else {

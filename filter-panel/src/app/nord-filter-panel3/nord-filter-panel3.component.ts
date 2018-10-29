@@ -16,29 +16,34 @@ import {
   styleUrls: ['./nord-filter-panel3.component.css']
 })
 export class NordFilterPanel3Component implements OnInit {
-  profileForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    address: new FormGroup({
-      street: new FormControl(''),
-      city: new FormControl(''),
-      state: new FormControl(''),
-      zip: new FormControl('')
-    })
-  });
+  @Input() title: string;
+  @Input() field_def: any[];
 
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.profileForm.value);
-  }
+  panelOpenState = false; //add expansion panel state
 
-  myForm: FormGroup;
-
-
-  constructor(fb: FormBuilder) {}
+  constructor() {}
 
   ngOnInit() {
-   
+    // let group: any = {};
+
+    this.field_def.forEach(i => {
+
+      document.write(i.caption);
+      // document.write(i.type);
+      // document.write(i.value);
+
+      if (i.type === "string") {
+        document.write("string");
+        const control = new FormControl(i.value);
+        console.log(control.value);
+      } else if (i.type === "number") {
+        document.write("number");
+      } else if (i.type === "date") {
+        document.write("date");
+      } else if (i.type === "radio") {
+        document.write("radio");
+      }
+    })
   }
 
 }

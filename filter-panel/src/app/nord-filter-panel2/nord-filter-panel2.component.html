@@ -35,9 +35,9 @@
 
         <mat-radio-group *ngSwitchCase="'radio'">
           <label>{{ i.caption + ": " }}</label>
-          <mat-radio-button *ngFor="let sub of i.value; index as i" [formControlName]="i.caption" [value]="sub.value">
+          <!-- <mat-radio-button *ngFor="let sub of i.value; index as i" [formControlName]="i.caption" [value]="sub.value">
             {{ sub.caption }}
-          </mat-radio-button>
+          </mat-radio-button> -->
         </mat-radio-group>
 
       </ng-container>
