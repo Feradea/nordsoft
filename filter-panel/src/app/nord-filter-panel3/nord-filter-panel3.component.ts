@@ -21,10 +21,16 @@ export class NordFilterPanel3Component implements OnInit {
 
   control = new FormControl('some value');
 
-  string = new FormControl('And');
-  number = new FormControl('123');
-  date = new FormControl('2018-10-29');
-  radio = new FormControl('asd');
+  myString: FormControl;
+  myNumber: FormControl;
+  myDate: FormControl;
+  myRadio: FormControl;
+
+  //date = new FormControl('2018-10-29');
+  //nem kell inicializalni, eleg definialni a tipust
+
+  //ilyen esetben ezt hasznaljuk:
+  //this.myString.setValue(i.value);
 
   panelOpenState = false; //add expansion panel state
 
@@ -33,37 +39,40 @@ export class NordFilterPanel3Component implements OnInit {
   ngOnInit() {
     let group: any = {};
     // objektum letrehozasa
-    
+
     this.field_def.forEach(i => {
 
-      document.write(i.caption);
+      // document.write(i.caption);
       // document.write(i.type);
       // document.write(i.value);
 
-      if (i.type === "string") {
-        //document.write("string");
-        //group[i.caption] = new FormControl(i.value); 
+      // document.write() -t nem hasznalunk !!!!!!
 
-        this.string.setValue(i.value);
-        
-      } else if (i.type === "number") {
-        //document.write("number");
+      if (i.type === "string") {
         //group[i.caption] = new FormControl(i.value); 
- 
-        this.number.setValue(i.value);
+        //this.myString.setValue(i.value);
+
+        this.myString = new FormControl(i.value);
+
+      } else if (i.type === "number") {
+        //group[i.caption] = new FormControl(i.value); 
+        //this.myNumber.setValue(i.value);
+        this.myNumber = new FormControl(i.value);
 
       } else if (i.type === "date") {
-        ///document.write("date");
         //group[i.caption] = new FormControl(i.value); 
-        this.date.setValue(i.value);
+        //this.myDate.setValue(i.value);
+        this.myDate = new FormControl(i.value);
 
       } else if (i.type === "radio") {
-        //document.write("radio");
         //group[i.caption] = new FormControl(i.value); 
-        this.radio.setValue(i.value);
-        
+        //this.myRadio.setValue(i.value);
+        this.myRadio = new FormControl(i.value);
+
+        console.log("radio button value: " + i.value);
       }
       // console.log(group);
+
     })
   }
 

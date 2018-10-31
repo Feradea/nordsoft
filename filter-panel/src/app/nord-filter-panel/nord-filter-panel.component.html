@@ -1,3 +1,5 @@
+<p>Nord Filter Panel 1 - template driven form </p>
+
 <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
@@ -34,6 +36,7 @@
           [(ngModel)]="element.value">
       </mat-form-field>
 
+      <!-- https://angular.io/api/forms/RadioControlValueAccessor  -->
       <mat-radio-group *ngSwitchCase="'radio'" [(ngModel)]="option">
         <label>{{ element.caption + ": " }}</label>
         <mat-radio-button *ngFor="let sub of element.value; index as i" [value]="sub.value">
