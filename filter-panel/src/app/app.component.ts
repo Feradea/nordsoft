@@ -75,15 +75,18 @@ export class AppComponent {
     type: "radio",
     value: [{
         caption: "Option a",
-        value: "apple"
+        sub_value: "apple",
+        checked: false
       },
       {
         caption: "Option b",
-        value: "orange"
+        sub_value: "orange",
+        checked: true
       },
       {
         caption: "Option c",
-        value: "banana"
+        sub_value: "banana",
+        checked: false
       }
     ]
   },
