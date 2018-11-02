@@ -7,16 +7,15 @@
       </mat-panel-title>
       <mat-panel-description *ngIf="!panelOpenState">
         <ng-container *ngFor="let element of field_def; last as l" [ngSwitch]="element.type">
-
           <p *ngSwitchCase="'number'"> <b>{{ element.caption }}:</b>{{ myNumber.value }}{{l ? '' : ', '}}</p>
-
           <!-- https://angular.io/api/common/DatePipe -->
           <p *ngSwitchCase="'date'"> {{ element.caption }}:<b>{{ myDate.value | date:'y-MM-d'}}</b>{{l ? '' : ', '}}</p>
           <p *ngSwitchCase="'string'"> {{ element.caption }}:<b>{{ myString.value }}</b>{{l ? '' : ', '}}</p>
-          <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ myRadio.value }}</b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ element.checked }}</b>{{l ? '' : ', '}}</p>
         </ng-container>
       </mat-panel-description>
     </mat-expansion-panel-header>
+
 
     <ng-container *ngFor="let element of field_def" [ngSwitch]="element.type">
       <mat-form-field *ngSwitchCase="'string'">
@@ -33,31 +32,16 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-
-      <mat-radio-group *ngSwitchCase="'radio'">
+      <mat-radio-group *ngSwitchCase="'radio'" [formControl]="myRadio">
         <label>{{ element.caption + ": " }}</label>
-        <mat-radio-button *ngFor="let sub of element.value; index as i" [formControlName]="myRadio" [value]="sub.sub_value"
-          [checked]="sub.checked">
+        <mat-radio-button *ngFor="let sub of element.value; index as i" [value]="sub.sub_value" [checked]="sub.sub_value === element.checked"
+        (click)="onChangeRadioButton(sub.sub_value)">
           {{ sub.caption }}
-          {{ sub.sub_value }}
-          {{ sub.checked }}
+          <!-- {{ sub.sub_value }}
+            {{ sub.checked }} -->
         </mat-radio-button>
       </mat-radio-group>
-
-
     </ng-container>
+
   </mat-expansion-panel>
 </mat-accordion>
-
-
-
-<ng-container  *ngFor="let asd of myRadio.value">
-  <ng-container *ngIf="asd.checked">
-    <p>{{ asd.caption }}
-      <br>
-      {{ asd.checked }}
-      <br>
-      {{ asd.sub_value }}
-    </p>
-  </ng-container>
-</ng-container>

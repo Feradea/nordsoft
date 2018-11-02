@@ -12,7 +12,6 @@ export class AppComponent {
 
   panel_title: string = "Filter Panel";
   panel_title2: string = "My Second Panel";
-  panel_title3: string = "My Third Panel for testing";
 
   field_def = [{
       caption: "Field 1",
@@ -66,6 +65,11 @@ export class AppComponent {
     value: "159"
   },
   {
+    caption: "Date 1",
+    type: "date",
+    value: "2018-10-19"
+  },
+  {
     caption: "Field Abc",
     type: "string",
     value: "Some text"
@@ -74,21 +78,19 @@ export class AppComponent {
     caption: "Options",
     type: "radio",
     value: [{
-        caption: "Option a",
-        sub_value: "apple",
-        checked: false
+        caption: "Fruit 1",
+        sub_value: "apple"
       },
       {
-        caption: "Option b",
-        sub_value: "orange",
-        checked: true
+        caption: "Fruit 2",
+        sub_value: "orange"
       },
       {
-        caption: "Option c",
-        sub_value: "banana",
-        checked: false
+        caption: "Fruit 3",
+        sub_value: "banana"
       }
-    ]
+    ],
+    checked: "orange",
   },
 ];
 

@@ -19,8 +19,6 @@ export class NordFilterPanel3Component implements OnInit {
   @Input() title: string;
   @Input() field_def: any[];
 
-  control = new FormControl('some value');
-
   myString: FormControl;
   myNumber: FormControl;
   myDate: FormControl;
@@ -34,9 +32,14 @@ export class NordFilterPanel3Component implements OnInit {
   //this.myString.setValue(i.value);
 
   panelOpenState = false; //add expansion panel state
- 
 
-  constructor() {}
+
+  constructor() { }
+
+  onChangeRadioButton(value){
+    console.log(value);
+
+  }
 
   ngOnInit() {
     let group: any = {};
@@ -45,9 +48,6 @@ export class NordFilterPanel3Component implements OnInit {
     this.field_def.forEach(i => {
 
       // document.write(i.caption);
-      // document.write(i.type);
-      // document.write(i.value);
-
       // document.write() -t nem hasznalunk !!!!!!
 
       if (i.type === "string") {
@@ -70,6 +70,7 @@ export class NordFilterPanel3Component implements OnInit {
       // console.log(group);
 
     })
+
   }
 
 }
