@@ -1,7 +1,8 @@
 import {
   Component,
   OnInit,
-  Input
+  Input,
+  Output 
 } from '@angular/core';
 import {
   FormControl,
@@ -23,7 +24,7 @@ export class NordFilterPanel3Component implements OnInit {
   myNumber: FormControl;
   myDate: FormControl;
   myRadio: FormControl;
-
+  radioButtonValue :string;
 
   //date = new FormControl('2018-10-29');
   //nem kell inicializalni, eleg definialni a tipust
@@ -33,12 +34,10 @@ export class NordFilterPanel3Component implements OnInit {
 
   panelOpenState = false; //add expansion panel state
 
-
   constructor() { }
 
-  onChangeRadioButton(value){
-    console.log(value);
-
+  onChangeRadioButton(value) {
+    this.radioButtonValue = value;
   }
 
   ngOnInit() {
@@ -47,7 +46,6 @@ export class NordFilterPanel3Component implements OnInit {
 
     this.field_def.forEach(i => {
 
-      // document.write(i.caption);
       // document.write() -t nem hasznalunk !!!!!!
 
       if (i.type === "string") {
@@ -61,6 +59,7 @@ export class NordFilterPanel3Component implements OnInit {
 
       } else if (i.type === "radio") {
         this.myRadio = new FormControl(i.value);
+        this.radioButtonValue = i.checked;
 
         for (let y = 0; y < i.value.length; y++) {
           console.log("Caption: " + i.value[y].caption + ", Sub_Value: " + i.value[y].sub_value + ", Checked: " + i.value[y].checked);
@@ -68,6 +67,7 @@ export class NordFilterPanel3Component implements OnInit {
 
       }
       // console.log(group);
+      console.log(this.radioButtonValue);
 
     })
 
