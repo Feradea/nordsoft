@@ -10,7 +10,7 @@
           <p *ngSwitchCase="'number'"> <b>{{ element.caption }}:</b>{{ myNumber.value }}{{l ? '' : ', '}}</p>
           <p *ngSwitchCase="'date'"> {{ element.caption }}:<b>{{ myDate.value | date:'y-MM-d'}}</b>{{l ? '' : ', '}}</p>
           <p *ngSwitchCase="'string'"> {{ element.caption }}:<b>{{ myString.value }}</b>{{l ? '' : ', '}}</p>
-          <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ myRadio.value }}</b>{{l ? '' : ', '}}</p>
+          <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ myRadio.value}}</b>{{l ? '' : ', '}}</p>
         </ng-container>
       </mat-panel-description>
     </mat-expansion-panel-header>
@@ -31,7 +31,7 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <mat-radio-group *ngSwitchCase="'radio'" #rGroup [formControl]="myRadio">
+        <mat-radio-group *ngSwitchCase="'radio'" #rGroup [formControl]="myRadio" [(ngModel)]="element.checked">
           <label>{{ element.caption + ": " }}</label>
           <mat-radio-button *ngFor="let sub of element.value; index as i" [value]=
           "sub.sub_value" radioGroup="rGroup">
@@ -42,4 +42,5 @@
 
   </mat-expansion-panel>
 </mat-accordion>
+
 

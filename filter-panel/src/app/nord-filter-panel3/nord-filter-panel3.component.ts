@@ -24,15 +24,9 @@ export class NordFilterPanel3Component implements OnInit {
   myDate: FormControl;
   myRadio: FormControl;
 
-  radioButtonValue: string;
-
   panelOpenState = false; //add expansion panel state
 
   constructor() { }
-
-  onChangeRadioButton(value) {
-    this.radioButtonValue = value;
-  }
 
   ngOnInit() {
     let group: any = {};
@@ -51,7 +45,6 @@ export class NordFilterPanel3Component implements OnInit {
       } else if (i.type === "radio") {
         this.myRadio = new FormControl(i.value);
       }
-      console.log(this.radioButtonValue);
 
     })
 
