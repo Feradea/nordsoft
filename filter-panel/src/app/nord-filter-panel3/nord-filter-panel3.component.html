@@ -31,7 +31,7 @@
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <mat-radio-group *ngSwitchCase="'radio'" #rGroup [formControl]="myRadio" [(ngModel)]="element.checked">
+        <mat-radio-group *ngSwitchCase="'radio'" #rGroup [formControl]="myRadio">
           <label>{{ element.caption + ": " }}</label>
           <mat-radio-button *ngFor="let sub of element.value; index as i" [value]=
           "sub.sub_value" radioGroup="rGroup">

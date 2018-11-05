@@ -43,7 +43,7 @@ export class NordFilterPanel3Component implements OnInit {
         this.myDate = new FormControl(i.value);
 
       } else if (i.type === "radio") {
-        this.myRadio = new FormControl(i.value);
+        this.myRadio = new FormControl(i.checked);
       }
 
     })
