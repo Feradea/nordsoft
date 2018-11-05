@@ -14,6 +14,8 @@ import {
 	MatExpansionModule, MatDatepickerModule, MatNativeDateModule,
 	MatRadioModule
 } from '@angular/material';
+import { NsPadLeftDirective } from './ns-pad-left.directive';
+import { NsPadRightDirective } from './ns-pad-right.directive';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import {
     AppComponent,
     NordFilterPanelComponent,
     NordFilterPanel2Component,
-    NordFilterPanel3Component
+    NordFilterPanel3Component,
+    NsPadLeftDirective,
+    NsPadRightDirective
   ],
   imports: [
     BrowserModule,
