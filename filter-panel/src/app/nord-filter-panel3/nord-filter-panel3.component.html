@@ -10,7 +10,8 @@
           <p *ngSwitchCase="'number'"> <b>{{ element.caption }}:</b>{{ myNumber.value }}{{l ? '' : ', '}}</p>
           <p *ngSwitchCase="'date'"> {{ element.caption }}:<b>{{ myDate.value | date:'y-MM-d'}}</b>{{l ? '' : ', '}}</p>
           <p *ngSwitchCase="'string'"> {{ element.caption }}:<b>{{ myString.value }}</b>{{l ? '' : ', '}}</p>
-          <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ radioButtonValue ? radioButtonValue : element.checked }}</b>{{l ? '' : ', '}}</p>
+          <!-- <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ radioButtonValue ? radioButtonValue : element.checked }}</b>{{l ? '' : ', '}}</p> -->
+          <p *ngSwitchCase="'radio'"> {{ element.caption }}:<b>{{ myRadio.value }}</b>{{l ? '' : ', '}}</p>
         </ng-container>
       </mat-panel-description>
     </mat-expansion-panel-header>
