@@ -1,7 +1,6 @@
 import {
   Component
 } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,9 @@ export class AppComponent {
   panel_title: string = "Filter Panel";
   panel_title2: string = "My Second Panel";
 
-  paddingSize: string = "16px";
+  some_text: string = "asd";
+
+  padding_size: string = "16px";
 
   field_def = [{
     caption: "Field 1",

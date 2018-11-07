@@ -18,6 +18,7 @@ import {
 export class NordFilterPanel3Component implements OnInit {
   @Input() title: string;
   @Input() field_def: any[];
+  @Input() padding_size: string;
 
   myString: FormControl;
   myNumber: FormControl;

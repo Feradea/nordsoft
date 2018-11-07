@@ -17,21 +17,21 @@
 
     <ng-container *ngFor="let element of field_def; first as isFirst; last as isLast;" [ngSwitch]="element.type">
 
-      <mat-form-field *ngSwitchCase="'string'" ns-pad-right>
+      <mat-form-field *ngSwitchCase="'string'" [ns-pad-left]="padding_size">
         <input matInput type="text" [formControl]="myString" [placeholder]="element.caption">
       </mat-form-field>
 
-      <mat-form-field *ngSwitchCase="'number'" ns-pad-right>
+      <mat-form-field *ngSwitchCase="'number'" [ns-pad-right]="padding_size">
         <input matInput type="number" [formControl]="myNumber" [placeholder]="element.caption">
       </mat-form-field>
 
-      <mat-form-field *ngSwitchCase="'date'" ns-pad-right> 
+      <mat-form-field *ngSwitchCase="'date'" [ns-pad-right]="padding_size"> 
         <input matInput [matDatepicker]="picker" [formControl]="myDate" [placeholder]="element.caption">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-radio-group *ngSwitchCase="'radio'" ns-pad-left #rGroup [formControl]="myRadio">
+      <mat-radio-group *ngSwitchCase="'radio'" #rGroup [formControl]="myRadio">
         <label>{{ element.caption + ": " }}</label>
         <mat-radio-button *ngFor="let sub of element.value; index as i" [value]="sub.sub_value" radioGroup="rGroup">
           {{ sub.caption}}
@@ -41,6 +41,3 @@
 
   </mat-expansion-panel>
 </mat-accordion>
-
-
-{{ padding_size}}

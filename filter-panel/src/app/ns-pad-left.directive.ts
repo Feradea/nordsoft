@@ -1,15 +1,21 @@
-import { Directive, ElementRef  } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit  } from '@angular/core';
 
 @Directive({
   selector: '[ns-pad-left]'
 })
 export class NsPadLeftDirective {
+  @Input('ns-pad-left') paddingSize: string;
 
-  constructor(el: ElementRef) { 
-    el.nativeElement.style.paddingLeft = "16px";
+  constructor(private el: ElementRef) {}
+
+  private nsPadLeft(paddingSize : string){
+    this.el.nativeElement.style.paddingLeft = paddingSize;
   }
 
- 
+  ngOnInit(){
+    this.nsPadLeft(this.paddingSize);
+  }
+
 }
 
 

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[ns-pad-right]'
@@ -6,8 +6,10 @@ import { Directive, ElementRef, Input } from '@angular/core';
 export class NsPadRightDirective {
   @Input('ns-pad-right') paddingSize: string;
 
-  constructor(el: ElementRef) {
-    el.nativeElement.style.paddingRight = this.paddingSize;
+  constructor(private el: ElementRef) {}
+
+  ngOnInit() {
+    this.el.nativeElement.style.paddingRight = this.paddingSize;
     console.log("paddingSize:" + this.paddingSize);
   }
 
