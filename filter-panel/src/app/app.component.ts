@@ -12,9 +12,8 @@ export class AppComponent {
 
   panel_title: string = "Filter Panel";
   panel_title2: string = "My Second Panel";
-  
-  public padding_size: number = 16;
 
+  paddingSize: string = "16px";
 
   field_def = [{
     caption: "Field 1",

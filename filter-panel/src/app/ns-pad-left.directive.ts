@@ -1,7 +1,7 @@
 import { Directive, ElementRef  } from '@angular/core';
 
 @Directive({
-  selector: '[appNsPadLeft]'
+  selector: '[ns-pad-left]'
 })
 export class NsPadLeftDirective {
 
