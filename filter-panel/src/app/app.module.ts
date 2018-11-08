@@ -12,7 +12,7 @@ import { NordFilterPanel3Component } from './nord-filter-panel3/nord-filter-pane
 import {
 	MatInputModule, 
 	MatExpansionModule, MatDatepickerModule, MatNativeDateModule,
-	MatRadioModule,MatIconModule, MatCardModule
+	MatRadioModule,MatIconModule, MatCardModule, MatButtonModule
 } from '@angular/material';
 import { NsPadLeftDirective } from './ns-pad-left.directive';
 import { NsPadRightDirective } from './ns-pad-right.directive';
@@ -40,7 +40,8 @@ import { MatPasswordComponent } from './mat-password/mat-password.component';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   
   ],
   providers: [],
