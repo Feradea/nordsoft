@@ -7,13 +7,10 @@ import { $ } from 'protractor';
   styleUrls: ['./mat-password.component.css']
 })
 export class MatPasswordComponent implements OnInit {
-
   hide = true;
 
   mouseDown() {
     this.hide = false;
-    console.log(event);
-
   }
 
   mouseUp() {
