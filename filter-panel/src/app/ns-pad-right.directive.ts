@@ -10,7 +10,6 @@ export class NsPadRightDirective {
 
   ngOnInit() {
     this.el.nativeElement.style.paddingRight = this.paddingSize;
-    console.log("paddingSize:" + this.paddingSize);
   }
 
 

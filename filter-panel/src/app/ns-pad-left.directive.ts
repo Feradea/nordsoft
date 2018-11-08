@@ -4,7 +4,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
   selector: '[ns-pad-left]'
 })
 
-// Solution with Getter Setter
+// Solution with Getter & Setter
 export class NsPadLeftDirective {
   @Input('ns-pad-left') set paddingSize(value) {
     this.el.nativeElement.style.paddingLeft = value;  

@@ -66,33 +66,6 @@ export class NordFilterPanel2Component implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    // keszitek egy objektumot, amit kesobb felhasznalok arra, hogy FormGroup-ot epitsek belole
-
-    let group: any = {};
-
-    this.field_def.forEach(i => { // foreach statement
-
-      if (Array.isArray(i.value)) {
-        // group[i.caption] = new FormControl(i.value)
-        // document.write(" isArray=:" + i.value); 
-
-        // document.write(" isArray=:" + i.value.length);  //3
-        // document.write(" isArray=:" + i.value[0].value); //apple
-
-        for (let y = 0; y < i.value.length; y++) {
-          document.write(i.value[y].caption);
-          document.write(i.value[y].value);
-        }
-
-      } else {
-        // const control = new FormControl('some value');
-        group[i.caption] = new FormControl(i.value)
-      }
-
-    })
-
-    this.formgroup = new FormGroup(group);
-    console.log(group);
   }
 
 }
