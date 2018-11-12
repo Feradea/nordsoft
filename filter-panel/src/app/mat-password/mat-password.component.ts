@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { $ } from 'protractor';
 import {
   FormControl,
-  FormGroup,
-  FormBuilder,
-  Validators
+  Validators,
 } from '@angular/forms';
+import { isNull } from 'util';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-mat-password',
@@ -18,36 +18,38 @@ export class MatPasswordComponent implements OnInit {
   hide = true;
   hidden = true;
 
+  //Without FormGroup
+  passwordControl = new FormControl('', Validators.required);
+  passwordConfirmControl = new FormControl('');
+
   //Without Form Builder
   // passwordForm = new FormGroup({
-  //   passwordControl: new FormControl(''),
+  //   passwordControl: new FormControl('',[Validators.required,Validators.minLength(4)]),
   //   passwordConfirmControl: new FormControl(''),
   // });
 
   // With FormBuilder
-  passwordForm = this.fb.group({
-    passwordControl: ['', Validators.required],
-    passwordConfirmControl: ['', Validators.required]
-  });
+  // passwordForm = this.fb.group({
+  //   passwordControl: ['', Validators.required],
+  //   passwordConfirmControl: ['']
+  // });
 
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.passwordForm.value);
+  passwordChecker() {
+    if (this.passwordControl.value === this.passwordConfirmControl.value) {
+      console.log("Megyeggyezik");
+      return false;
+    }
+    else {
+      console.log("Nem");
+     this.passwordConfirmControl.setErrors({'invalid':true});
+     
+    }
   }
 
-  mouseDown() {
-    this.hide = false;
-  }
 
-  mouseUp() {
-    this.hide = true;
-  }
-
-  constructor(private fb: FormBuilder) { }
-
+  constructor() { }
 
   ngOnInit() {
-
   }
 
 
