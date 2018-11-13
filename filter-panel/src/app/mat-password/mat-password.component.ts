@@ -35,17 +35,15 @@ export class MatPasswordComponent implements OnInit {
   // });
 
   passwordChecker() {
-    if (this.passwordControl.value === this.passwordConfirmControl.value) {
-      console.log("Megyeggyezik");
-      return false;
-    }
-    else {
-      console.log("Nem");
-     this.passwordConfirmControl.setErrors({'invalid':true});
-     
+    if (this.passwordConfirmControl.value !== "") {
+      if (this.passwordControl.value === this.passwordConfirmControl.value) {
+        return false;
+      }
+      else {
+        this.passwordConfirmControl.setErrors({ 'invalid': true });
+      }
     }
   }
-
 
   constructor() { }
 
