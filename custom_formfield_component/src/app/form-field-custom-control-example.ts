@@ -13,9 +13,11 @@ import {Subject} from 'rxjs';
 })
 export class FormFieldCustomControlExample {}
 
+// -------------------------------------------------
 /** Data structure for holding telephone number. */
-class MyTel {
-  constructor(public area: string, public exchange: string, public subscriber: string) {}
+export class MyTel {
+  constructor(public phonenumber: string) {
+  }
 }
 
 /** Custom `MatFormFieldControl` for telephone number input. */
@@ -24,58 +26,145 @@ class MyTel {
   templateUrl: 'example-tel-input-example.html',
   styleUrls: ['example-tel-input-example.css'],
   providers: [{provide: MatFormFieldControl, useExisting: MyTelInput}],
-  // host: {
+  host: {
   //   '[class.example-floating]': 'shouldLabelFloat',
-  //   '[id]': 'id',
-  //   '[attr.aria-describedby]': 'describedBy',
-  // }
+    '[id]': 'id',
+  // '[attr.aria-describedby]': 'describedBy',
+  }
 })
-class MyTelInput implements MatFormFieldControl<MyTel>{
 
+export class MyTelInput implements MatFormFieldControl<MyTel>{
+ static nextId = 0;
   parts: FormGroup;
+  // stateChanges property to detects when something happend in the form control
   stateChanges = new Subject<void>();
+  id = `example-tel-input-${MyTelInput.nextId++}`;
+  ngControl = null;
+
+  @Input()
+  get placeholder() {
+    console.log("placeholder: ",this._placeholder);
+    return this._placeholder;
+  }
+  set placeholder(plh){
+    this._placeholder = plh;
+    this.stateChanges.next();
+  }
+  private _placeholder: string;
 
   @Input()
   get value(): MyTel | null {
     let n = this.parts.value;
-    if (n.area.length == 3 && n.exchange.length == 3 && n.subscriber.length == 4) {
-      return new MyTel(n.area, n.exchange, n.subscriber);
+
+    if (n.phonenumber.length == 3) {
+      return new MyTel(n.phonenumber);
     }
     return null;
   }
+
   set value(tel: MyTel | null) {
-    tel = tel || new MyTel('', '', '');
-    this.parts.setValue({area: tel.area, exchange: tel.exchange, subscriber: tel.subscriber});
+    tel = tel || new MyTel('');
+    this.parts.setValue({phonenumber: tel.phonenumber});
     this.stateChanges.next();
   }
 
-  constructor(fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.parts =  fb.group({
-      'area': '',
-      'exchange': '',
-      'subscriber': '',
+      'phonenumber': ''
     });
   }
 
   ngOnDestroy() {
-  this.stateChanges.complete();
+    console.log("ngOnDestroy");
+    this.stateChanges.complete();
 }
-
-  // ngOnDestroy() {
-  //   this.stateChanges.complete();
-  //   this.fm.stopMonitoring(this.elRef);
-  // }
-
-  // setDescribedByIds(ids: string[]) {
-  //   this.describedBy = ids.join(' ');
-  // }
-
-  // onContainerClick(event: MouseEvent) {
-  //   if ((event.target as Element).tagName.toLowerCase() != 'input') {
-  //     this.elRef.nativeElement.querySelector('input')!.focus();
-  //   }
-  // }
 }
+// export class MyTelInput implements MatFormFieldControl<MyTel>, OnDestroy {
+//   static nextId = 0;
+
+//   parts: FormGroup;
+//   stateChanges = new Subject<void>();
+//   focused = false;
+//   ngControl = null;
+//   errorState = false;
+//   controlType = 'example-tel-input';
+//   id = `example-tel-input-${MyTelInput.nextId++}`;
+//   describedBy = '';
+
+//   get empty() {
+//     const {value: {area, exchange, subscriber}} = this.parts;
+
+//     return !area && !exchange && !subscriber;
+//   }
+
+//   get shouldLabelFloat() { return this.focused || !this.empty; }
+
+//   @Input()
+//   get placeholder(): string { return this._placeholder; }
+//   set placeholder(value: string) {
+//     this._placeholder = value;
+//     this.stateChanges.next();
+//   }
+//   private _placeholder: string;
+
+//   @Input()
+//   get required(): boolean { return this._required; }
+//   set required(value: boolean) {
+//     this._required = coerceBooleanProperty(value);
+//     this.stateChanges.next();
+//   }
+//   private _required = false;
+
+//   @Input()
+//   get disabled(): boolean { return this._disabled; }
+//   set disabled(value: boolean) {
+//     this._disabled = coerceBooleanProperty(value);
+//     this.stateChanges.next();
+//   }
+//   private _disabled = false;
+
+//   @Input()
+//   get value(): MyTel | null {
+//     const {value: {area, exchange, subscriber}} = this.parts;
+//     if (area.length === 3 && exchange.length === 3 && subscriber.length === 4) {
+//       return new MyTel(area, exchange, subscriber);
+//     }
+//     return null;
+//   }
+//   set value(tel: MyTel | null) {
+//     const {area, exchange, subscriber} = tel || new MyTel('', '', '');
+//     this.parts.setValue({area, exchange, subscriber});
+//     this.stateChanges.next();
+//   }
+
+//   constructor(fb: FormBuilder, private fm: FocusMonitor, private elRef: ElementRef<HTMLElement>) {
+//     this.parts = fb.group({
+//       area: '',
+//       exchange: '',
+//       subscriber: '',
+//     });
+
+//     fm.monitor(elRef, true).subscribe(origin => {
+//       this.focused = !!origin;
+//       this.stateChanges.next();
+//     });
+//   }
+
+//   ngOnDestroy() {
+//     this.stateChanges.complete();
+//     this.fm.stopMonitoring(this.elRef);
+//   }
+
+//   setDescribedByIds(ids: string[]) {
+//     this.describedBy = ids.join(' ');
+//   }
+
+//   onContainerClick(event: MouseEvent) {
+//     if ((event.target as Element).tagName.toLowerCase() != 'input') {
+//       this.elRef.nativeElement.querySelector('input')!.focus();
+//     }
+//   }
+// }
 
 
 /**  Copyright 2018 Google Inc. All Rights Reserved.
