@@ -11,9 +11,6 @@ export class AppComponent {
 
   panel_title: string = "Filter Panel";
   panel_title2: string = "My Second Panel";
-
-  some_text: string = "asd";
-
   padding_size: string = "16px";
 
   field_def = [{
@@ -96,6 +93,9 @@ export class AppComponent {
     checked: "orange",
   },
   ];
+
 }
+
+
 
 

@@ -17,6 +17,7 @@ import {
 import { NsPadLeftDirective } from './ns-pad-left.directive';
 import { NsPadRightDirective } from './ns-pad-right.directive';
 import { MatPasswordComponent } from './mat-password/mat-password.component';
+import { NsMatPasswordComponent } from './ns-mat-password/ns-mat-password.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MatPasswordComponent } from './mat-password/mat-password.component';
     NordFilterPanel3Component,
     NsPadLeftDirective,
     NsPadRightDirective,
-    MatPasswordComponent
+    MatPasswordComponent,
+    NsMatPasswordComponent
   ],
   imports: [
     BrowserModule,

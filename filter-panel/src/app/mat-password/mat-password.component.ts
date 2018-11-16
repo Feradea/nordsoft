@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { $ } from 'protractor';
 import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { isNull } from 'util';
-import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-mat-password',
