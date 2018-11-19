@@ -14,8 +14,6 @@ export class AppComponent {
   panel_title2: string = "My Second Panel";
   padding_size: string = "16px";
 
-  // value for formcontrol
-  userPasswd:string = "userPasswdControl";
   //value for password placeholder
   passwdPlaceHolder:string = "Enter your password";
   // value for confirm password placeholder

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, forwardRef} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormControlDirective, DefaultValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormControlDirective, DefaultValueAccessor, Validators } from '@angular/forms';
 
 export const PASSWORD_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -15,16 +15,21 @@ export const PASSWORD_VALUE_ACCESSOR: any = {
 })
 
 export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
-  @Input() formControl: FormControl;
+  // @Input() formControl: FormControl;
   @Input() placeholder: string;
   @Input() confirmHolder: string;
+
+  passwdControl = new FormControl('',Validators.required);
+  passwdConfirmControl = new FormControl('');
+
+  hide: boolean = true;
+  hidden: boolean = true;
 
   // onChange = (_: any) => { };
   // onTouched = () => { };
   onChange: any = () => { };
   onTouched: any = () => { };
   value: string = '';
-  // userPasswdControl = new FormControl('');
 
   ngOnInit() {
     
@@ -32,16 +37,26 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
 
   constructor() {}
 
-
   // The writeValue method is used 
   // by formControl to set value to the native form control. 
   writeValue(value: any): void {
     this.value = value || '';
+    console.log(value);
+
   }
 
   pushChanges(value: any) {
-    this.onChange(value);
-    console.log("Value2: " + value);
+
+    if (this.passwdConfirmControl.value !== "") {
+     if(this.passwdControl.value === this.passwdConfirmControl.value){
+      this.onChange(value);
+      return false;
+     }
+     else{
+      this.passwdConfirmControl.setErrors({ 'invalid': true });
+     }
+    }
+
   }
 
   registerOnChange(fn: (_: any) => {}): void { 
