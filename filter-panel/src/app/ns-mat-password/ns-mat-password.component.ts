@@ -1,45 +1,59 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatFormFieldControl } from '@angular/material';
-import { Subject } from 'rxjs';
+import { Component, OnInit, Input, forwardRef} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormControlDirective, DefaultValueAccessor } from '@angular/forms';
+
+export const PASSWORD_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => NsMatPasswordComponent),
+  multi: true,
+};
 
 @Component({
   selector: 'ns-mat-password',
   templateUrl: './ns-mat-password.component.html',
   styleUrls: ['./ns-mat-password.component.css'],
-  providers: [{ provide: MatFormFieldControl, useExisting: MyPassInput }],
+  providers: [PASSWORD_VALUE_ACCESSOR]
 })
 
-// export class NsMatPasswordComponent implements OnInit {
+export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
+  @Input() formControl: FormControl;
+  @Input() placeholder: string;
+  @Input() confirmHolder: string;
 
-//   hide = true;
-//   hidden = true;
+  // onChange = (_: any) => { };
+  // onTouched = () => { };
+  onChange: any = () => { };
+  onTouched: any = () => { };
+  value: string = '';
+  // userPasswdControl = new FormControl('');
 
-//   passwordPlaceholder: string = "Enter your password";
+  ngOnInit() {
+    
+  }
 
-//   passwordControl: FormControl;
+  constructor() {}
 
-//   constructor() { }
 
-//   ngOnInit() {
+  // The writeValue method is used 
+  // by formControl to set value to the native form control. 
+  writeValue(value: any): void {
+    this.value = value || '';
+  }
 
-//   }
+  pushChanges(value: any) {
+    this.onChange(value);
+    console.log("Value2: " + value);
+  }
 
-// }
+  registerOnChange(fn: (_: any) => {}): void { 
+    this.onChange = fn; 
+  }
+  registerOnTouched(fn: () => {}): void { 
+    this.onTouched = fn; 
+  }
+  setDisabledState?(isDisabled: boolean): void;
 
-/** Data structure for holding telephone number. */
-export class MyPass {
-  constructor(public password: string) { }
 }
 
-class MyPassInput {
- 
-}
 
-
-class MyPassInput implements MatFormFieldControl<MyPass> {
-
-
-}
 
 

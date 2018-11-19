@@ -1,6 +1,7 @@
 import {
   Component
 } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,15 @@ export class AppComponent {
   panel_title: string = "Filter Panel";
   panel_title2: string = "My Second Panel";
   padding_size: string = "16px";
+
+  // value for formcontrol
+  userPasswd:string = "userPasswdControl";
+  //value for password placeholder
+  passwdPlaceHolder:string = "Enter your password";
+  // value for confirm password placeholder
+  confirmPlaceHolder:string = "Re-enter your password";
+
+  public userPasswdControl : FormControl;
 
   field_def = [{
     caption: "Field 1",
@@ -94,6 +104,9 @@ export class AppComponent {
   },
   ];
 
+  constructor(){
+    this.userPasswdControl = new FormControl(''); 
+  } 
 }
 
 
