@@ -24,14 +24,16 @@
   <app-mat-password></app-mat-password>
   <br>
 
-  <!-- <mat-form-field> -->
-  <ns-mat-password [formControl]="userPasswdControl" [placeholder]="passwdPlaceHolder" [confirmHolder]="confirmPlaceHolder"></ns-mat-password>
-  <!-- </mat-form-field> -->
+
+  <ns-mat-password [formControl]="userPasswdControl" [placeholder]="passwdPlaceHolder" [confirmHolder]="confirmPlaceHolder" (change)="checkStatus()"></ns-mat-password>
+
 
   <hr>
   Form value:{{ userPasswdControl.value }}
   <br>
   Form Status: {{ userPasswdControl.status }}
+  <br>
+  Form: {{userPasswdControl | json}}
 
 
 
