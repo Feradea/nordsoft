@@ -54,45 +54,32 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
       if (this.passwdConfirmControl.value !== "") {
 
         if (this.passwdConfirmControl.value === this.passwdControl.value) {
-          console.log("2 pass match");
-          this.passwdConfirmControl.setErrors({ 'invalid': false });
-          this._value = target.value;
-          this.onChange(this._value);
+
+          if (this.passwdControl.value === this.passwdConfirmControl.value) {
+            // when passwords match
+            this.passwdConfirmControl.setErrors(null);
+            this._value = target.value;
+            this.onChange(this._value);
+          }
         }
         else {
-          console.log("doesnt match");
+          // when passwords don't match
           this.passwdConfirmControl.setErrors({ 'invalid': true });
           this._value = '';
           this.onChange(this._value);
         }
       }
       else {
-        console.log("config field is empty");
+        // when config password field is empty
         this._value = '';
         this.onChange(this._value);
       }
     }
     else {
-      console.log("password field is empty");
+      // when password field is empty
       this._value = '';
-        this.onChange(this._value);
+      this.onChange(this._value);
     }
-
-
-    // if (this.passwdConfirmControl.value !== "") {
-
-    //   if (this.passwdControl.value === this.passwdConfirmControl.value) {
-    //     this.onChange(target.value);
-
-    //   }
-    //   else {
-    //     this.passwdConfirmControl.setErrors({ 'invalid': true });
-
-    //   }
-    // }
-
-    // this._value = 'new value changed from inside';
-    // this.onChange(this._value);
   }
 
   //From ControlValueAccessor interface
