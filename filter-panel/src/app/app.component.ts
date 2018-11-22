@@ -117,13 +117,12 @@ export class AppComponent {
   ];
 
   constructor() {
+    // this.userPasswdControl = new FormControl('');
     this.userPasswdControl = new FormControl('',Validators.required);
   }
 
   checkStatus(){
-    console.log("checkStatus check");
-   
-   
+    
   }
 
 }
