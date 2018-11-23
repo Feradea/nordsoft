@@ -27,8 +27,7 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   hide: boolean = true;
   hidden: boolean = true;
 
-  private _value: any = null;
-  // propagateChange = (_: any) => {}; = onChange
+  _value: any = null;
   public onChange: any = () => { /*Empty*/ };
   public onTouched: any = () => {  /*Empty*/ };
 
@@ -39,14 +38,6 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   //   this._value = v;
   //   this.onChange(this._value)
   // }
-
-  ngOnInit() {
-
-  }
-
-  constructor() {
-
-  }
 
   pushChanges(target: any) {
 
@@ -83,18 +74,19 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   }
 
   //From ControlValueAccessor interface
-  writeValue(value: any): void {
-    if (value !== undefined) {
-      console.log('writeValue', value);
-      this._value = value;
-    }
-    // this._value = obj || '';
+  writeValue(obj: any): void {
+    
+      console.log('writeValue', obj);
+      this._value = obj;
+      
   }
 
   //From ControlValueAccessor interface
-  // Register a listener for change events.
   registerOnChange(fn: (_: any) => {}): void {
     this.onChange = fn;
+
+    this.passwdControl.setValue(this._value);
+    this.passwdConfirmControl.setValue(this._value); 
   }
 
   //From ControlValueAccessor interface
@@ -103,6 +95,14 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   }
 
   setDisabledState?(isDisabled: boolean): void;
+
+  ngOnInit() {
+  
+  }
+
+  constructor() {
+  
+  }
 
 }
 

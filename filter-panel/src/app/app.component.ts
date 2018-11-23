@@ -1,5 +1,5 @@
 import {
-  Component, ViewChild
+  Component, OnInit
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { NsMatPasswordComponent } from './ns-mat-password/ns-mat-password.component';
@@ -9,21 +9,7 @@ import { NsMatPasswordComponent } from './ns-mat-password/ns-mat-password.compon
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-
-  // @ViewChild(NsMatPasswordComponent) child: NsMatPasswordComponent;
-  @ViewChild(NsMatPasswordComponent) private set childSetter(child: NsMatPasswordComponent) {
-    let childPassControll = child.passwdControl;
-    let childPassConfigControll = child.passwdConfirmControl;
-
-    // if(childPassControll.status === 'VALID' && childPassControll.status === 'VALID')
-    // {
-    //   
-    // }
-    // 
-
-  };
-
+export class AppComponent implements OnInit {
   panel_title: string = "Filter Panel";
   panel_title2: string = "My Second Panel";
   padding_size: string = "16px";
@@ -32,6 +18,8 @@ export class AppComponent {
   passwdPlaceHolder: string = "Enter your password";
   // value for confirm password placeholder
   confirmPlaceHolder: string = "Re-enter your password";
+  // initial value for userPasswdControl
+  initialValue = 'asd';
 
   public userPasswdControl: FormControl;
 
@@ -118,12 +106,15 @@ export class AppComponent {
 
   constructor() {
     // this.userPasswdControl = new FormControl('');
-    this.userPasswdControl = new FormControl('',Validators.required);
+    this.userPasswdControl = new FormControl(this.initialValue, Validators.required);
+
   }
 
-  checkStatus(){
-    
+  ngOnInit() {
+    this.userPasswdControl.valueChanges.subscribe(value => this.initialValue = value['this.userPasswdControl']);
   }
+
+
 
 }
 
