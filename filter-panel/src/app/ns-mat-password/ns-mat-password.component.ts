@@ -75,18 +75,16 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
 
   //From ControlValueAccessor interface
   writeValue(obj: any): void {
-    
-      console.log('writeValue', obj);
-      this._value = obj;
-      
+    console.log('writeValue', obj);
+    this._value = obj;
+    this.passwdControl.setValue(this._value);
+    this.passwdConfirmControl.setValue(this._value);
+
   }
 
   //From ControlValueAccessor interface
   registerOnChange(fn: (_: any) => {}): void {
     this.onChange = fn;
-
-    this.passwdControl.setValue(this._value);
-    this.passwdConfirmControl.setValue(this._value); 
   }
 
   //From ControlValueAccessor interface
@@ -97,11 +95,11 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   setDisabledState?(isDisabled: boolean): void;
 
   ngOnInit() {
-  
+
   }
 
   constructor() {
-  
+
   }
 
 }

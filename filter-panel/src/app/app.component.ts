@@ -111,7 +111,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userPasswdControl.valueChanges.subscribe(value => this.initialValue = value['this.userPasswdControl']);
+    
   }
 
 
