@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, forwardRef, SimpleChange } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, DefaultValueAccessor, Validators } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
 
 export const PASSWORD_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -16,7 +17,6 @@ export const PASSWORD_VALUE_ACCESSOR: any = {
 })
 
 export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
-  @Input() control;
   @Input() formControl: FormControl;
   @Input() placeholder: string;
   @Input() confirmHolder: string;
@@ -31,15 +31,9 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   public onChange: any = () => { /*Empty*/ };
   public onTouched: any = () => {  /*Empty*/ };
 
-  // get value(): any { return this._value; };
-
-  // Sets a new value for the form control.
-  // set value(v: any) {
-  //   this._value = v;
-  //   this.onChange(this._value)
-  // }
-
   pushChanges(target: any) {
+
+    console.log("validators:" + this.passwdControl.asyncValidator);
 
     if (this.passwdControl.value !== "") {
       if (this.passwdConfirmControl.value !== "") {
@@ -79,7 +73,6 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
     this._value = obj;
     this.passwdControl.setValue(this._value);
     this.passwdConfirmControl.setValue(this._value);
-
   }
 
   //From ControlValueAccessor interface
@@ -95,11 +88,11 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   setDisabledState?(isDisabled: boolean): void;
 
   ngOnInit() {
-
+    console.log(this.formControl.errors);
   }
 
   constructor() {
-
+    
   }
 
 }
