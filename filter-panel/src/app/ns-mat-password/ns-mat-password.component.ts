@@ -42,6 +42,7 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   hidden: boolean = true;
 
   _value: any = null;
+  error_message : string;
   onChange: any = () => { /*Empty*/ };
   onTouched: any = () => {  /*Empty*/ };
 
@@ -84,14 +85,32 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
         this.onChange(this._value);
       }
     }
-
-
     else {
       // when password field is empty
       this._value = '';
       this.onChange(this._value);
     }
 
+    this.error_message='';
+
+    for (let i = 0; i < this.password_validation_messages.password.length; i++) {
+      if (this.passwdControl.hasError(this.password_validation_messages.password[i].type)) {
+        this.error_message += this.password_validation_messages.password[i].message;
+      }
+    }
+
+    for (let j = 0; j < this.password_validation_messages.confirm_password.length; j++) {
+      if (this.passwdConfirmControl.hasError(this.password_validation_messages.confirm_password[j].type)) {
+        this.error_message += this.password_validation_messages.confirm_password[j].message;
+      }
+    }
+
+    console.log(this.error_message);
+
+
+
+    // console.log("Error: " + this.passwdControl.hasError('required'));
+    // console.log("Error min: " + this.passwdControl.hasError('minlength'));
 
     // if (this.passwdControl.value !== "") {
     //   if (this.passwdConfirmControl.value !== "") {
