@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
   initialValue = '';
 
   // public userPasswdControl: FormControl;
-  public userPasswdControl = new FormControl(this.initialValue, [Validators.required, Validators.minLength(5)]);
+  public userPasswdControl = new FormControl(this.initialValue, [Validators.required]);
+  // public userPasswdControl = new FormControl(this.initialValue, Validators.compose([Validators.required, Validators.minLength(8)]));
 
   field_def = [{
     caption: "Field 1",
@@ -114,7 +115,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.userPasswdControl.errors);
+    
+  }
+
+  onChangesFunction(){
+    
   }
 
 
