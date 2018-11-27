@@ -16,14 +16,16 @@ export class AppComponent implements OnInit {
 
   //value for password placeholder
   passwdPlaceHolder: string = "Enter your password";
+
   // value for confirm password placeholder
   confirmPlaceHolder: string = "Re-enter your password";
-  // initial value for userPasswdControl
-  // initialValue = 'Pass!2018#';
-  initialValue = '';
 
-  // public userPasswdControl: FormControl;
-  public userPasswdControl = new FormControl(this.initialValue, [Validators.required]);
+  // initial value for userPasswdControl
+  initialValue = '';
+  // initialValue = 'Pass!2018#';
+
+  public userPasswdControl: FormControl;
+  // public userPasswdControl = new FormControl(this.initialValue, [Validators.required]);
   // public userPasswdControl = new FormControl(this.initialValue, Validators.compose([Validators.required, Validators.minLength(8)]));
 
   field_def = [{
@@ -108,21 +110,12 @@ export class AppComponent implements OnInit {
   ];
 
   constructor() {
-    // this.userPasswdControl = new FormControl('');
-    // this.userPasswdControl = new FormControl(this.initialValue, [Validators.required, Validators.minLength(4)]);
-    // this.userPasswdControl = new FormControl(this.initialValue, Validators.minLength(4));
-    
+  
   }
 
   ngOnInit() {
-    
+    this.userPasswdControl = new FormControl(this.initialValue, Validators.compose([Validators.required,Validators.minLength(8)]));
   }
-
-  onChangesFunction(){
-    
-  }
-
-
 
 }
 

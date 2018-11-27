@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, Validators } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validators, Validator, AbstractControl } from '@angular/forms';
 
 export const PASSWORD_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -7,11 +7,11 @@ export const PASSWORD_VALUE_ACCESSOR: any = {
   multi: true,
 };
 
-// export const PASSWORD_VALIDATORS: any = {
-//   provide: NG_VALIDATORS,
-//   useExisting: forwardRef(() => NsMatPasswordComponent),
-//   multi: true,
-// };
+export const PASSWORD_VALIDATORS: any = {
+  provide: NG_VALIDATORS,
+  useExisting: forwardRef(() => NsMatPasswordComponent),
+  multi: true,
+};
 
 
 @Component({
@@ -27,22 +27,18 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
   @Input() placeholder: string;
   @Input() confirmHolder: string;
 
-  // public passwdControl = new FormControl('', {
-  //   validators: Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.[!@#\$%\^&])(?=.{5,})'),
-  //   updateOn: 'blur'
-  // });
-  public passwdControl = new FormControl('', Validators.compose([
-    Validators.required,
-    Validators.minLength(5),
-    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-  ]));
-  public passwdConfirmControl = new FormControl('');
-
   hide: boolean = true;
   hidden: boolean = true;
 
+  // public passwdControl = new FormControl('', Validators.compose([
+  //   Validators.required,
+  //   Validators.minLength(5)
+  // ]));
+  public passwdControl = new FormControl('');
+  public passwdConfirmControl = new FormControl('');
+
   _value: any = null;
-  error_message : string;
+  error_message: string;
   onChange: any = () => { /*Empty*/ };
   onTouched: any = () => {  /*Empty*/ };
 
@@ -63,35 +59,20 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
     let value_a = this.passwdControl;
     let value_b = this.passwdConfirmControl;
 
-    if (value_a.value !== null) {
-      if (value_b.value !== null) {
-        if (value_a.value === value_b.value) {
-          // when passwords match
-          value_b.setErrors(null);
-          this._value = target.value;
-          this.onChange(this._value);
-        }
-        else {
-          // when passwords don't match
-          value_b.setErrors({ 'notEqual': true });
-          this._value = '';
-          this.onChange(this._value);
-        }
-      }
-      else {
-        // when confirm password field is empty
-        value_b.setErrors(null);
-        this._value = '';
-        this.onChange(this._value);
-      }
+    if (value_a.value === value_b.value) {
+      // when passwords match
+      value_b.setErrors(null);
+      this._value = target.value;
+      this.onChange(this._value);
     }
     else {
-      // when password field is empty
+      // when passwords don't match
+      value_b.setErrors({ 'notEqual': true });
       this._value = '';
       this.onChange(this._value);
     }
 
-    this.error_message='';
+    this.error_message = '';
 
     for (let i = 0; i < this.password_validation_messages.password.length; i++) {
       if (this.passwdControl.hasError(this.password_validation_messages.password[i].type)) {
@@ -106,42 +87,6 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
     }
 
     console.log(this.error_message);
-
-
-
-    // console.log("Error: " + this.passwdControl.hasError('required'));
-    // console.log("Error min: " + this.passwdControl.hasError('minlength'));
-
-    // if (this.passwdControl.value !== "") {
-    //   if (this.passwdConfirmControl.value !== "") {
-
-    //     if (this.passwdConfirmControl.value === this.passwdControl.value) {
-
-    //       if (this.passwdControl.value === this.passwdConfirmControl.value) {
-    //         // when passwords match
-    //         this.passwdConfirmControl.setErrors(null);
-    //         this._value = target.value;
-    //         this.onChange(this._value);
-    //       }
-    //     }
-    //     else {
-    //       // when passwords don't match
-    //       this.passwdConfirmControl.setErrors({ 'invalid': true });
-    //       this._value = '';
-    //       this.onChange(this._value);
-    //     }
-    //   }
-    //   else {
-    //     // when config password field is empty
-    //     this._value = '';
-    //     this.onChange(this._value);
-    //   }
-    // }
-    // else {
-    //   // when password field is empty
-    //   this._value = '';
-    //   this.onChange(this._value);
-    // }
   }
 
   //From ControlValueAccessor interface
@@ -164,16 +109,12 @@ export class NsMatPasswordComponent implements ControlValueAccessor, OnInit {
 
   setDisabledState?(isDisabled: boolean): void;
 
-
-
   ngOnInit() {
 
   }
 
-
-
   constructor() {
-
+    console.log("Outside FormControl:" + this.formControl);
   }
 
 }
